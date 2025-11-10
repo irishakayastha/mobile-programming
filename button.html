@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Career Divs with Buttons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .frp {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .container {
+      border: 2px solid black;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .career {
+      color: blue;
+      padding: 20px;
+      border: 2px solid pink;
+      width: 200px;
+      text-align: center;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Career Divs with Buttons</h1>
+
+<img id="careerImage" src="https://c9d6f136.delivery.rocketcdn.me/wp-content/uploads/2020/08/Careers.jpg" alt="Career Image">
+
+<div class="container">
+  <h3>Container 1</h3>
+  <div class="frp">
+    <div class="career" id="career1" style="background-color:blueviolet;">
+      <h2>Software Developer</h2>
+      <p>Writes and maintains computer programs.</p>
+      <p>Works in teams to create applications.</p>
+    </div>
+  </div>
+  <button onclick="hideDiv()">Hide First Career</button>
+</div>
+
+<div class="container">
+  <h3>Container 2</h3>
+  <div class="frp">
+    <div class="career" id="career2" style="background-color:brown;">
+      <h2>Graphic Designer</h2>
+      <p>Creates visual content for print and digital media.</p>
+      <p>Uses creativity and software tools to communicate ideas.</p>
+    </div>
+  </div>
+  <button onclick="showDiv()">Show First Career</button>
+</div>
+
+<div class="container">
+  <h3>Container 3</h3>
+  <div class="frp">
+    <div class="career" id="career3" style="background-color:pink;">
+      <h2>Data Analyst</h2>
+      <p>Examines data to help organizations make decisions.</p>
+      <p>Uses statistical tools and visualization techniques.</p>
+    </div>
+  </div>
+  <button onclick="changeImage()">Change Image</button>
+</div>
+
+<div class="container">
+  <h3>Container 4</h3>
+  <div class="frp">
+    <div class="career" id="career4" style="background-color:green;">
+      <h2>Marketing Manager</h2>
+      <p>Plans and executes marketing campaigns.</p>
+      <p>Analyzes market trends to improve strategy.</p>
+    </div>
+  </div>
+  <button onclick="changeBackground()">Change Background Color</button>
+</div>
+
+<div class="container">
+  <h3>Container 5</h3>
+  <div class="frp">
+    <div class="career" id="career5" style="background-color:orange;">
+      <h2>Teacher</h2>
+      <p>Educates students and develops lesson plans.</p>
+      <p>Mentors students for academic and personal growth.</p>
+    </div>
+  </div>
+  <button onclick="changeParagraphStyle()">Change Paragraph Style</button>
+</div>
+
+<script>
+  function hideDiv() {
+    document.getElementById("career1").style.display = "none";
+  }
+
+  function showDiv() {
+    document.getElementById("career1").style.display = "block";
+  }
+
+  function changeImage() {
+    document.getElementById("careerImage").src = "https://c9d6f136.delivery.rocketcdn.me/wp-content/uploads/2020/08/Careers.jpg";
+  }
+
+  function changeBackground() {
+    document.getElementById("career4").style.backgroundColor = "purple";
+  }
+
+  function changeParagraphStyle() {
+    const para = document.querySelector("#career5 p");
+    para.style.color = "blue";
+    para.style.fontSize = "20px";
+    para.style.fontWeight = "bold";
+  }
+</script>
+
+</body>
+</html>
