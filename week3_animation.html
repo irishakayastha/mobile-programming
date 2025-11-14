@@ -1,36 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>jQuery Animation Example</title>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-
-  <script> 
-    $(document).ready(function(){
-      $("button").click(function(){
-        // Animate to new state
-        $("div").animate({  
-          left: '150px',
-          height: '150px',
-          width: '250px',
-          opacity: '0.5',
-          backgroundColor: 'blue'
-        }, 1000)
-        // Animate back to original state
-        .animate({
-          left: '0px',
-          height: '100px',
-          width: '200px',
-          opacity: '1',
-          backgroundColor: 'blue'
-        }, 1000);
-      });
-    });
-  </script> 
+  
+  <script src="animation.js"></script>
 </head>
 <body>
- 
   <button>Start Animation</button>
-
   <div style="background:green; height:100px; width:200px; position:absolute;"></div>
-
 </body>
 </html>

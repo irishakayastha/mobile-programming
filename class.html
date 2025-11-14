@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+<ul id="menu">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#services">Services</a></li>
+  <li><a href="#gallery">Gallery</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+
+  if (menu.style.display === "flex") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
+}
+</script>
+
+</body>
+</html>
