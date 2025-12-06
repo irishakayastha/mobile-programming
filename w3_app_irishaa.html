@@ -2,11 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<link rel="stylesheet" href="w3_app.css">
+<link rel="stylesheet" href="w3_app_irisha.css">
 
 </head>
 <body>
@@ -27,8 +24,11 @@
 
 <!-- Hero Section -->
 <section class="hero">
-  <h1>Welcome to QuizVerse</h1>
+  <h1 id="heroTitle">Welcome to QuizVerse</h1>
   <p>Test knowledge. Challenge friends. Learn smarter.</p>
+
+  <!-- Button to show effects -->
+  <button id="effectBtn" class="heroBtn">Quiz</button>
 </section>
 
 <!-- Featured Categories -->
@@ -53,7 +53,7 @@
   </a>
 
   <a href="sports.html" class="card">
-    <img src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://media.easy-peasy.ai/27feb2bb-aeb4-4a83-9fb6-8f3f2a15885e/e7882bc1-f284-4b59-b212-16bc5fd89b74.png" alt="Sports">
+    <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple71/v4/16/9f/5a/169f5ae2-c89f-fc3e-ea01-0a35c92e2ca1/source/512x512bb.jpg" alt="Sports">
     <p>Sports</p>
   </a>
 
@@ -66,14 +66,38 @@
 
 </section>
 
-<!-- jQuery Toggle -->
+<!-- jQuery Functions -->
 <script>
+
+// 1. Navbar Mobile Toggle (slide)
 $(document).ready(function () {
   $(".hamburger").click(function () {
     $(".nav-links").slideToggle();
   });
 });
-</script>
 
+// 2. Fade toggle effect for Hero title
+$(document).ready(function () {
+  $("#effectBtn").click(function () {
+    $("#heroTitle").fadeToggle(1000);
+  });
+});
+
+// 3. Animate categories (move right)
+$(document).ready(function () {
+  $("#effectBtn").click(function () {
+    $(".card").animate({ marginLeft: "20px" }, 600)
+               .animate({ marginLeft: "0px" }, 600);
+  });
+});
+
+// 4. Slide up categories on double-click
+$(document).ready(function () {
+  $(".features h2").dblclick(function () {
+    $(".cards").slideUp("slow");
+  });
+});
+
+</script>
 </body>
 </html>

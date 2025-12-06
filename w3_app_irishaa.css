@@ -79,7 +79,6 @@ body {
   align-items: center;
 }
 
-/* FIXED IMAGE SIZE */
 .card img {
   width: 100%;
   height: 130px;
@@ -93,9 +92,8 @@ body {
   text-align: center;
 }
 
-/* MOBILE MENU */
-@media (max-width: 600px) {
 
+@media (max-width: 600px) {
   .hamburger { 
     display: block;
   }
@@ -117,12 +115,10 @@ body {
   }
 }
 
-/* TABLETS */
 @media (min-width: 768px) {
   body { background-color: lightyellow; }
 }
 
-/* DESKTOP LARGE */
 @media (min-width: 992px) {
   body { background-color: lavender; }
 }

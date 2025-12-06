@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizVerse</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="w7_app.css">
+</head>
+<body>
+
+    <!-- Landing Screen -->
+    <div id="landingScreen" class="screen">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Quiz_icon.png"
+             class="logo" />
+
+        <h1 class="title">QuizVerse</h1>
+        <p class="subtitle">Learn smarter. Challenge yourself.</p>
+
+        <button class="primaryButton" onclick="goToHome()">Start Learning</button>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="homeScreen" class="screen hidden">
+        <h2 class="heading">Featured Categories</h2>
+
+        <div id="categoryContainer" class="cardContainer"></div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen hidden">
+        <h2 id="quizTitle" class="title"></h2>
+        <p id="quizProgress" class="subtitle"></p>
+        <p id="quizQuestion" class="question"></p>
+        <div id="optionsContainer"></div>
+    </div>
+
+    <script src="w7_app.js"></script>
+</body>
+</html>
