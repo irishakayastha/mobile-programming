@@ -1,91 +1,297 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f0f4f8;
-    text-align: center;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: #021945;
+  color: #e9f0fb;
+  overflow-x: hidden;
+}
+.hidden { display: none; }
+
+/* ---------------- PAGE ---------------- */
+.page {
+  padding: 20px;
+  min-height: 100vh;
 }
 
-/* Screens */
-.screen {
-    padding: 20px;
+/* ---------------- LANDING PAGE ---------------- */
+#landingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
 }
-.hidden {
-    display: none;
+.appTitle {
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
 }
-
-/* Logo */
-.logo {
-    width: 120px;
-    height: 120px;
+.tagline {
+  margin-top: 8px;
+  color: #d1d8e8;
+  font-size: 16px;
 }
-
-/* Titles */
-.title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #0d1b2a;
-}
-.subtitle {
-    font-size: 16px;
-    color: #1b263b;
-    margin-bottom: 20px;
-}
-
-/* Buttons */
-.primaryButton {
-    background: #fca311;
-    padding: 14px 40px;
-    border-radius: 30px;
-    font-size: 18px;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-.primaryButton:hover {
-    opacity: 0.9;
+.primaryBtn {
+  margin-top: 28px;
+  background: #FFD000;
+  padding: 14px 26px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
 }
 
-/* Categories */
-.cardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #074070;
+  color: white;
 }
+.logo { font-size: 20px; font-weight: 700; }
+.hamburger { font-size: 25px; background: none; border: none; color: white; cursor: pointer; }
+
+/* ---------------- SIDEBAR ---------------- */
+.sideMenu {
+  position: fixed;
+  top: 0; left: -260px;
+  width: 230px;
+  height: 100vh;
+  background: white;
+  color: #081426;
+  border-radius: 0 12px 12px 0;
+  box-shadow: -10px 22px 48px rgba(2,8,23,0.38);
+  padding: 20px;
+  transition: left .25s ease;
+  z-index: 9999;
+  overflow-y: auto;
+}
+.sideMenu.open { left: 0; }
+.closeMenu {
+  position: absolute;
+  right: 12px; top: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #444;
+}
+.menuBtn {
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#074070,#0a5583);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+}
+.activeProfileBox {
+  padding: 12px 8px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.activeProfileBox .profile-label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 700;
+}
+#activeProfileInside {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #074070;
+}
+
+/* ---------------- HOME PAGE ---------------- */
+.welcomeBox {
+  text-align: center;
+  margin-top: 24px;
+}
+.welcomeBox h2 {
+  font-size: 26px;
+  color: white;
+  margin-bottom: 10px;
+}
+.controlsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.controlsRow label {
+  color: white;
+  align-self: center;
+}
+.controlsRow select {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: gold;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 120px;
+  max-width: 180px;
+}
+
+/* ---------------- CATEGORIES ---------------- */
+.catTitle {
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, 200px);    /* 2 rows */
+  gap: 12px;
+  justify-items: center;                  /* center cards horizontally */
+  align-items: center;
+  padding: 10px;                    /* center cards vertically */
+}
+
 .card {
-    width: 150px;
-    height: 180px;
-    background: white;
-    border-radius: 12px;
-    margin: 10px;
-    padding: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+  width: 100%;        /* fills the grid column */
+  height: 100%;       /* fills the grid row */
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
 }
-.cardImage {
-    width: 100%;
-    height: 100px;
-    border-radius: 8px;
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
 }
-.cardText {
-    font-weight: bold;
-    margin-top: 10px;
+.card img {
+  width: 80%;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 6px;
 }
 
-/* Quiz */
-.question {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 15px;
+/* ---------------- QUIZ ---------------- */
+#quizTitle { text-align:center; font-size:24px; margin-bottom:10px; }
+#quizQuestion {
+  font-size: 20px;
+  padding: 10px 0;
+  text-align: center;
 }
-.optionButton {
-    width: 80%;
-    padding: 12px;
-    margin: 6px auto;
-    border-radius: 10px;
-    border: 1px solid #0d1b2a;
-    background: white;
-    font-size: 16px;
-    cursor: pointer;
+#quizOptions .optionBtn {
+  width: 90%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  margin: 6px auto;
+  cursor: pointer;
+  display: block;
 }
-.optionButton:hover {
-    background: #e8eef2;
+.optionCorrect { background: linear-gradient(90deg,#17b978,#0aa36a) !important; }
+.optionWrong { background: linear-gradient(90deg,#ff6b6b,#e11d2d) !important; }
+#quizMeta { text-align:center; margin-bottom:10px; }
+#quizProgress { font-size:14px; margin-bottom:4px; }
+#quizTimer { font-size:14px; }
+
+/* ---------------- PROFILE FORM ---------------- */
+.profile-form {
+  background: rgba(255,255,255,0.05);
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
+.profile-form input, .profile-form select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: gold;
+  border-radius: 8px;
+}
+#profileList {
+  list-style: none;
+  padding: 0;
+}
+#profileList li {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+.profile-row .profile-label {
+  color: #d1d8e8;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.profile-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.profile-actions .useBtn,
+.profile-actions .editBtn,
+.profile-actions .delBtn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.profile-actions .useBtn { background: linear-gradient(90deg,#074070,#0a5583); }
+.profile-actions .editBtn { background: rgba(255,255,255,0.12); }
+.profile-actions .delBtn { background: linear-gradient(90deg,#ff6b6b,#e11d2d); }
+
+/* ---------------- LEADERBOARD ---------------- */
+#leaderboardList table {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#leaderboardList th, #leaderboardList td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: white;
+}
+#leaderboardList th {
+  background: rgba(255,255,255,0.08);
+  font-weight: 700;
+}
+
+/*

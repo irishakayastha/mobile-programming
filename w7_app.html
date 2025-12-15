@@ -1,41 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizVerse</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="w7_app.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>QuizVerse</title>
+  <link rel="stylesheet" href="w7_app.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-    <!-- Landing Screen -->
-    <div id="landingScreen" class="screen">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Quiz_icon.png"
-             class="logo" />
+  <!-- LANDING PAGE -->
+  <div id="landingPage" class="page">
+    <h1 class="appTitle">QuizVerse</h1>
+    <p class="tagline">Play now and level up!</p>
+    <button id="playNowBtn" class="primaryBtn">Play Now</button>
+  </div>
 
-        <h1 class="title">QuizVerse</h1>
-        <p class="subtitle">Learn smarter. Challenge yourself.</p>
+  <!-- HOME PAGE -->
+  <div id="homePage" class="page hidden">
+    <nav class="navbar">
+      <div class="logo">QuizVerse</div>
+      <div class="navRight">
+        <div class="hamburger" id="hamburgerBtn">&#9776;</div>
+      </div>
+    </nav>
 
-        <button class="primaryButton" onclick="goToHome()">Start Learning</button>
+    <!-- Sidebar -->
+    <div class="sideMenu" id="sideMenu" aria-hidden="true">
+      <div id="activeProfileBox" class="activeProfileBox">
+        <div class="profile-label">Active Profile</div>
+        <div id="activeProfileInside">No profile selected</div>
+      </div>
+      <span class="closeMenu" id="closeMenu">✖</span>
+      <a href="#" class="menuBtn profileBtn">Profile</a>
+      <a href="#" class="menuBtn leaderboardBtn">Leaderboard</a>
+      <a href="#" class="menuBtn aboutBtn">About Us</a>
+      <a href="#" class="menuBtn addQuestionBtn">Add Question</a>
+      <a href="#" class="menuBtn statsBtn">My Stats</a>
+      <div class="menuFooter">
+        <div id="activeUsernameLabel">No profile selected</div>
+      </div>
     </div>
 
-    <!-- Home Screen -->
-    <div id="homeScreen" class="screen hidden">
-        <h2 class="heading">Featured Categories</h2>
+    <section class="welcomeBox">
+      <h2>Welcome to QuizVerse</h2>
+      <p>Test knowledge. Challenge friends. Learn smarter.</p>
+      <div class="controlsRow">
+        <label>
+          Difficulty:
+          <select id="difficultySelect">
+            <option value="easy">Easy (5 q)</option>
+            <option value="medium" selected>Medium (10 q)</option>
+            <option value="hard">Hard (15 q)</option>
+          </select>
+        </label>
+        <label>
+          Mode:
+          <select id="modeSelect">
+            <option value="relax">Relax (no timer)</option>
+            <option value="speed">Speed (timer)</option>
+          </select>
+        </label>
+      </div>
+    </section>
 
-        <div id="categoryContainer" class="cardContainer"></div>
+    <h3 class="catTitle">Featured Categories</h3>
+    <div class="cards">
+      <div class="card" data-category="science">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2A_Pm77afkIKK-rNPqrNS9ImhTiFa-VJXg&s" alt="Science">
+        <p>Science & Technology</p>
+      </div>
+      <div class="card" data-category="history">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEbY8br1ffHhF2F_oLQVQD5O4IJ43QJJMDzA&s" alt="History">
+        <p>History & Culture</p>
+      </div>
+      <div class="card" data-category="critical">
+        <img src="https://png.pngtree.com/png-clipart/20240428/original/pngtree-critical-thinking-vector-concept-illustration-png-image_14954989.png" alt="Critical Thinking">
+        <p>Critical Thinking</p>
+      </div>
+      <div class="card" data-category="current">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP1RwqMphXXC4dU-0Pp86kbGbkCRTVLc34nA&s" alt="Current Affairs">
+        <p>Current Affairs</p>
+      </div>
     </div>
+  </div>
 
-    <!-- Quiz Screen -->
-    <div id="quizScreen" class="screen hidden">
-        <h2 id="quizTitle" class="title"></h2>
-        <p id="quizProgress" class="subtitle"></p>
-        <p id="quizQuestion" class="question"></p>
-        <div id="optionsContainer"></div>
+  <!-- QUIZ PAGE -->
+  <div id="quizPage" class="page hidden">
+    <button id="backToHome" class="smallBtn">← Back</button>
+    <h2 id="quizTitle"></h2>
+    <div id="quizMeta">
+      <div id="quizProgress"></div>
+      <div id="quizTimer" class="hidden">Time: <span id="timerValue">0</span>s</div>
     </div>
+    <div id="quizQuestion"></div>
+    <div id="quizOptions"></div>
+  </div>
 
-    <script src="w7_app.js"></script>
+  <!-- LEADERBOARD PAGE -->
+  <div id="leaderboardPage" class="page hidden">
+    <button id="lbBack" class="smallBtn">← Back</button>
+    <h2>Leaderboard</h2>
+    <div id="leaderboardList"></div>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div id="profilePage" class="page hidden">
+    <button id="profileBack" class="smallBtn">← Back</button>
+    <h2>Your Profile</h2>
+    <form id="profileForm" class="profile-form">
+      <input type="hidden" id="recordId">
+      <input type="text" id="fullName" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="text" id="favCategory" placeholder="Favorite Category">
+      <input type="number" id="age" placeholder="Age" min="0">
+      <select id="gender">
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <button type="submit" class="primaryBtn">Save Profile</button>
+    </form>
+    <ul id="profileList"></ul>
+  </div>
+
+  <!-- ADD QUESTION PAGE -->
+  <div id="addQuestionPage" class="page hidden">
+    <button id="aqBack" class="smallBtn">← Back</button>
+    <h2>Add Question</h2>
+    <form id="addQuestionForm" class="profile-form">
+      <label>Category
+        <select id="aqCategory" required>
+          <option value="">Select</option>
+          <option value="science">Science</option>
+          <option value="history">History</option>
+          <option value="critical">Critical Thinking</option>
+          <option value="current">Current Affairs</option>
+        </select>
+      </label>
+      <input type="text" id="aqQuestion" placeholder="Question text" required>
+      <input type="text" id="opt0" placeholder="Option 1" required>
+      <input type="text" id="opt1" placeholder="Option 2" required>
+      <input type="text" id="opt2" placeholder="Option 3" required>
+      <label>Correct Answer:
+        <select id="aqAnswer">
+          <option value="0">Option 1</option>
+          <option value="1">Option 2</option>
+          <option value="2">Option 3</option>
+        </select>
+      </label>
+      <button type="submit" class="primaryBtn">Add Question</button>
+    </form>
+  </div>
+
+  <!-- STATS PAGE -->
+  <div id="statsPage" class="page hidden">
+    <button id="statsBack" class="smallBtn">← Back</button>
+    <h2>My Stats</h2>
+    <div id="statsContent" class="statsContent"></div>
+  </div>
+
+  <script type="module" src="w7_app.js"></script>
 </body>
 </html>
